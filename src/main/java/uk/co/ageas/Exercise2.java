@@ -1,5 +1,7 @@
 package uk.co.ageas;
 
+import java.util.stream.IntStream;
+
 /**
  * Requirement
  * -----------
@@ -29,16 +31,15 @@ public class Exercise2 {
         String result = "";
 
         // write your logic here...
-        if (input.matches("^[0-9]+$")) {
-        	char[] ch = input.toCharArray();
-            int sum = Character.getNumericValue(ch[0]) * ((int) Math.pow(2, 0)) + Character.getNumericValue(ch[1]) * (int) Math.pow(2, 1)
-            		+ Character.getNumericValue(ch[2]) * (int) Math.pow(2, 2) + Character.getNumericValue(ch[3]) * (int) Math.pow(2, 3);
-            
+        if (input.matches("[01]+")) {
+        	int sum = IntStream.range(0, input.length())
+                    .map(i -> Character.getNumericValue(input.charAt(i)) * (int) Math.pow(2, i))
+                    .sum();
             // Check during the interview, adding this for testcase pass. Use case seems to be different.
-            if (sum == Math.pow(2, 3))
+        	if (sum == Math.pow(2, 3))
             	result = "I am default";
-            else
-                result = "I am " +String.valueOf(sum);
+        	else
+              result = "I am " +String.valueOf(sum);
         } else {
         	result = "Invalid input";
         }

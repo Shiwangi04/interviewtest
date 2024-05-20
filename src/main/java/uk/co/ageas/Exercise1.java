@@ -1,10 +1,8 @@
 package uk.co.ageas;
 
 import java.security.InvalidParameterException;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
